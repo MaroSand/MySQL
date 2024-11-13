@@ -1,0 +1,33 @@
+#a) Películas con una clasificación PG y duración de más de 120.
+select clasificacion, duracion
+from pelicula
+where clasificacion = "PG" and duracion > 120;
+
+#b) Listar los actores cuyo apellidos contenga "RA". Ordena las filas por apellidos y nombres(en ese orden).
+select apellidos, nombre from actor
+where apellidos like "%RA%"
+order by 1,2;
+
+#c) Cantidad de películas de cada categoría. Mostrando ordeado por nombre categoría.
+select categoria.nombre as categoria, count(*) as cantidad
+from pelicula
+join pelicula_categoria on pelicula.id_pelicula = pelicula_categoria.id_pelicula
+join categoria on pelicula_categoria.id_categoria = categoria.id_categoria
+group by 1;
+
+#d) Listar título de película, nombre del idioma, apellidos y nombre de actores de la película cuyo título es "IRON MOON", ordenado por
+#apellidos y nombre (debe devolver 8 registros).
+select apellidos, actor.nombre, titulo, idioma.nombre
+from pelicula
+join pelicula_actor on pelicula.id_pelicula = pelicula_actor.id_pelicula
+join actor on actor.id_actor = pelicula_actor.id_actor
+join idioma as idioma on pelicula.id_idioma
+where titulo = "IRON MOON"
+order by 1,2;
+
+#e) Mostrar el país, la ciudad y dirección de cada cliente.
+select apellidos, cliente.nombre, direccion.direccion, ciudad.nombre as ciudad, pais.nombre as pais
+from cliente
+join direccion on cliente.id_direccion = direccion.id_direccion
+join ciudad on direccion.id_ciudad = ciudad.id_ciudad
+join pais on ciudad.id_pais  = pais.id_pais;
