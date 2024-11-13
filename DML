@@ -1,0 +1,9 @@
+select * from sakila_es.actor order by id_actor DESC;
+
+INSERT INTO sakila_es.actor (nombre, apellidos)
+VALUES('MARISOL', 'SANDOBAL');
+
+DELETE FROM sakila_es.actor WHERE (APELLIDOS = 'MESSI');
+
+UPDATE sakila_es.actor SET apellidos = 'QUINTEROS'
+WHERE(id_actor = '243')
